@@ -1,0 +1,25 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: demo-1-service
+# spec:
+#   type: NodePort
+#   selector:
+#     app: demo-1-label
+#   ports:
+#     - protocol: TCP # 將 container 3000 port 轉到 80 port
+#       port: 80
+#       targetPort: 3000
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "demo.fullname" . }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    {{- include "demo.selectorLabels" . | nindent 4 }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 3000
+      protocol: TCP

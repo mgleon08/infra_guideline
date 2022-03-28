@@ -1,0 +1,18 @@
+replicaCount: 2
+
+image:
+  repository: mgleon08/docker-demo
+  tag: 0.1.0
+
+service:
+  type: NodePort
+  port: 80
+
+ingress:
+  enabled: true
+  className: ""
+  hosts:
+    - host: demo-1.com
+      paths:
+        - path: /
+          pathType: Prefix
