@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  server:
+    container_name: docker-compose-demo
+    build: ./
+    image: docker-compose-demo:0.1.0
+    env_file:
+      - .env
+    ports:
+      - '${SERVER_PORT}:${SERVER_PORT}'
+    networks:
+      - docker_compose_network
+    depends_on:
+      - redis_db
+  redis_db:
+    container_name: redis
+    restart: always
+    image: redis:6.2.6
+    command: redis-server
+    volumes:
+      - './data/redis:/data'
+    networks:
+      - docker_compose_network
+
+networks:
+  docker_compose_network:
+    name: docker_compose_network
+    driver: bridge

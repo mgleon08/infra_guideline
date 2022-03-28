@@ -1,0 +1,13 @@
+{
+  "name": "docker-compose",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "dependencies": {
+    "redis": "^4.0.4"
+  }
+}
