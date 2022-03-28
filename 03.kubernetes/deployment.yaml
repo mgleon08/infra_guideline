@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+spec:
+  replicas: 3 # 建立多少個相同的 Pod
+  template:   # Pod 統一的設定
+    metadata:
+      labels:
+        app: demoApp
+    spec:
+      containers:
+        - name: kubernetes-demo-container
+          image: mgleon08/docker-demo:0.1.0
+          ports:
+            - containerPort: 3000
+  selector:
+    matchLabels:
+      app: demoApp

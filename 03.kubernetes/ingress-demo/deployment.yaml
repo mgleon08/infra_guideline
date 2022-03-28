@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-1
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: demo-1-label
+    spec:
+      containers:
+        - name: demo-1-container
+          image: mgleon08/docker-demo:0.1.0
+          ports:
+            - containerPort: 3000
+  selector:
+    matchLabels:
+      app: demo-1-label
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-2
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: demo-2-label
+    spec:
+      containers:
+        - name: demo-2-container
+          image: mgleon08/docker-demo:0.2.0
+          ports:
+            - containerPort: 3000
+  selector:
+    matchLabels:
+      app: demo-2-label

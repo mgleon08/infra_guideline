@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod # 該元件是什麼屬性，常見有 Pod、Node、Service、Namespace、ReplicationController 等
+metadata:
+  name: kubernetes-demo-pod # Pod 名稱
+  labels:
+    app: demoApp # Pod 標籤
+spec:
+  containers:
+     - name: kubernetes-demo-container
+       image: mgleon08/docker-demo:0.1.0 # 指定 Container 要使用哪個 Image
+       ports:
+         - containerPort: 3000 # 指定 Container 有哪些 port 是允許外部資源存取

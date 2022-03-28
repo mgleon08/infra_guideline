@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-ingress
+spec:
+  rules:
+    - host: demo-1.com # host 對應到 demo-1-service 的 80 port
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: demo-1-service
+              port:
+                number: 80
+    - host: demo-2.com # host 對應到 demo-2-service 的 80 port
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: demo-2-service
+              port:
+                number: 80
