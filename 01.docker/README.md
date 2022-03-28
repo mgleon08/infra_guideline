@@ -47,6 +47,8 @@ docker push mgleon08/docker-demo:0.1.0
 
 透過 multi-stage build 可以減少 image size，也可以隱藏一些私密資訊。
 
+透過 `.dockerignore` 可以讓 `COPY` 時，忽略該檔案，減少 image 大小
+
 ## Base command
 
 ```ruby
