@@ -15,6 +15,8 @@ docker 讓應用程式佈署在軟體容器下的工作可以自動化進行，�
 ```ruby
 # -t: tag name
 docker build -t docker-demo .
+
+# 可以透過 docker scan docker-demo 掃描有什麼已知漏洞
 ```
 
 ## Run image

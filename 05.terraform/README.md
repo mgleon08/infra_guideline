@@ -3,6 +3,8 @@
 * [Terraform](https://www.terraform.io/)
 * [Terraform Command Line](https://www.terraform.io/cli/commands)
 * [Registry](https://registry.terraform.io/)
+  * [Providers](https://registry.terraform.io/browse/providers)
+  * [Modules](https://registry.terraform.io/browse/modules)
 * [Tutorials](https://learn.hashicorp.com/terraform?utm_source=terraform_io)
 
 透過 Terraform，可以不需要去介面上開機器，手動設定 s3 等等，只要寫好 Terraform 腳本，就可以一鍵建立所有需要的資源，並且可以透過程式碼去管理資源達到 Infrastructure as code (Iac) 的目標。
@@ -107,11 +109,15 @@ locals {
 }
 
 # 可以共享在 Terraform Registry 的 module，並帶入自己的 variable
-module "cluster" {
-  source = "./app-cluster"
-  version = "0.0.5"
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
 
   # variable
-  servers = 5
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
 }
 ```
